@@ -9,7 +9,7 @@ const listItems = [];
 //get all face list and save it locally
 fetch(`${baseUrl}largefacelists/${config.largeFaceListId}/persistedfaces?start=0&top=1000`, {
         method: 'GET',
-        agent: new proxyAgent(config.proxyUrl),
+     //  agent: new proxyAgent(config.proxyUrl),
         headers: {
           'Ocp-Apim-Subscription-Key': config.subscriptionKey
         }
@@ -43,7 +43,7 @@ app.get('/', (req,res)=>{
 app.post('/face/detect', (req, res) => {
      fetch(`${baseUrl}detect?returnFaceId=true&returnFaceLandmarks=false`, {
         method: 'POST',
-        agent: new proxyAgent(config.proxyUrl),
+      //  agent: new proxyAgent(config.proxyUrl),
         headers: {
           'Ocp-Apim-Subscription-Key': config.subscriptionKey,
           'Content-Type': 'application/octet-stream'
@@ -67,7 +67,7 @@ app.post('/face/detect', (req, res) => {
 
            fetch(`${baseUrl}findsimilars`, {
             method: 'POST',
-            agent: new proxyAgent(config.proxyUrl),
+            //agent: new proxyAgent(config.proxyUrl),
             headers: {
               'Ocp-Apim-Subscription-Key': config.subscriptionKey,
               'Content-Type': 'application/json'
@@ -90,7 +90,7 @@ app.post('/face/detect', (req, res) => {
 
              fetch(config.actionerUrl, {
                method: 'POST',
-               agent: new proxyAgent(config.proxyUrl),
+             //  agent: new proxyAgent(config.proxyUrl),
                headers: {
                  'Content-Type': 'application/json'
                },
