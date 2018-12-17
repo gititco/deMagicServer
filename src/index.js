@@ -32,6 +32,14 @@ fetch(`${baseUrl}largefacelists/${config.largeFaceListId}/persistedfaces?start=0
 
 // express rest api
 const app = express();
+
+app.get('/', (req,res)=>{
+  res.status(200).send({
+    success: 'true',
+    message: 'success'
+  });
+});
+
 app.post('/face/detect', (req, res) => {
      fetch(`${baseUrl}detect?returnFaceId=true&returnFaceLandmarks=false`, {
         method: 'POST',
@@ -115,7 +123,7 @@ app.post('/face/detect', (req, res) => {
 });
 });
 
-const PORT = config.port;
+const PORT = process.env.PORT || config.port;
 
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`)
